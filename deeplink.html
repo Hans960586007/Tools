@@ -19,8 +19,14 @@
     </style>
     <script>
         $(document).ready(function (){
+
+            var deepLink =  function (code) {
+                return "https://uat.bipsp.com/appshare/h5TZ.html?referralCode=" + code;
+            };
+
+
             $("#deeplinkBtn").on('click',function (){
-               location.href = 'https://uat.bipsp.com/appshare/h5TZ.html?referralCode=RE8R';
+               location.href = deepLink("RE8R");
             });
         });
     </script>
