@@ -20,13 +20,14 @@
     <script>
         $(document).ready(function (){
 
-            var deepLink =  function (code) {
+            var deepLinkUrl =  function (code) {
                 return "https://uat.bipsp.com/appshare/h5TZ.html?referralCode=" + code;
             };
 
 
             $("#deeplinkBtn").on('click',function (){
-               location.href = deepLink("RE8R");
+                alert(deepLinkUrl("RE8R"))
+               location.href = deepLinkUrl("RE8R");
             });
         });
     </script>
