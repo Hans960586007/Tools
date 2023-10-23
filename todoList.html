@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>to-do</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
         var object = {
             pageType: 'inAppBrowser',
-            properties: "https://uat.bipsp.com/appshare/h5TZ.html?referralCode=RE8R",
+            target: "https://uat.bipsp.com/appshare/h5TZ.html?referralCode=RE8R",
         }
         $(document).ready(function (){
             var btns = $("button")
@@ -19,13 +19,13 @@
                         object.pageType = "externalBrowser"
                     }else if(id == "btn3"){
                         object.pageType = "native"
-                        object.properties = "Renewal Polcies"
+                        object.target = "Renewal Polcies"
                     }else if(id == "btn4"){
                         object.pageType = "native"
-                        object.properties = "E-Payment"
+                        object.target = "E-Payment"
                     }else if(id == "btn5"){
                         object.pageType = "native"
-                        object.properties = "E-Payment"
+                        object.target = "E-Payment"
                     }
                     console.log(object)
                     window.webkit.messageHandlers.inAppNavigation.postMessage(object)
