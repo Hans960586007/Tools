@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        var object = {
+            pageType: 'inAppBrowser',
+            properties: "https://uat.bipsp.com/appshare/h5TZ.html?referralCode=RE8R",
+        }
+        $(document).ready(function (){
+            var btns = $("button")
+            for (const btn in btns) {
+                $(btn).on('click',function (e){
+                    let id = e.target.id
+                    if (id == "btn2"){
+                        object.pageType = "externalBrowser"
+                    }else if(id == "btn3"){
+                        object.pageType = "native"
+                        object.properties = "Renewal Polcies"
+                    }else if(id == "btn4"){
+                        object.pageType = "native"
+                        object.properties = "E-Payment"
+                    }else if(id == "btn5"){
+                        object.pageType = "native"
+                        object.properties = "E-Payment"
+                    }
+                    console.log(object)
+                    window.webkit.messageHandlers.inAppNavigation.postMessage({data: object})
+                });
+            }
+            // $("#deeplinkBtn").on('click',function (e){
+            //    location.href = 'https://uat.bipsp.com/appshare/h5TZ.html?referralCode=RE8R';
+            // });
+        });
+    </script>
+</head>
+<body>
+    <div class="sort content">
+        <ul class="content" style="list-style: none;">
+            <li><button id="btn1">in app Browser</button></li>
+            <li><button id="btn2">external browser</button></li>
+            <li><button id="btn3">Pending to Renewal Polcies</button></li>
+            <li><button id="btn4">Payment Overdues</button></li>
+            <li><button id="btn5">Policy Pending to Pay</button></li>
+        </ul>
+    </div>
+</body>
+</html>
