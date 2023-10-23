@@ -15,7 +15,9 @@
             for (const btn in btns) {
                 $(btn).on('click',function (e){
                     let id = e.target.id
-                    if (id == "btn2"){
+                    if (id == "btn1"){
+                        object.pageType = "inAppBrowser"
+                    }else if (id == "btn2"){
                         object.pageType = "externalBrowser"
                     }else if(id == "btn3"){
                         object.pageType = "native"
