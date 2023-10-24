@@ -13,6 +13,11 @@
     <title>to-do</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
+
+    var u = navigator.userAgent;
+    // var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+
         var object = {
             pageType: 'inAppBrowser',
             target: "https://uat.bipsp.com/appshare/h5TZ.html?referralCode=RE8R",
@@ -37,7 +42,11 @@
                         object.target = "E-Payment"
                     }
                     console.log(object)
-                    window.webkit.messageHandlers.inAppNavigation.postMessage(object)
+                    if (isAndroid){
+                        window.android.jscalloc(object);
+                    }else{
+                        window.webkit.messageHandlers.inAppNavigation.postMessage(object)
+                    }
                 });
             }
             // $("#deeplinkBtn").on('click',function (e){
