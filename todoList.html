@@ -19,8 +19,8 @@
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 
         var object = {
-            pageType: 'inAppBrowser',
-            target: "https://uat.bipsp.com/appshare/h5TZ.html?referralCode=RE8R",
+            openMode: 'inAppBrowser',
+            target: "https://xxxxx",
         }
         $(document).ready(function (){
             var btns = $("button")
@@ -28,17 +28,19 @@
                 $(btn).on('click',function (e){
                     let id = e.target.id
                     if (id == "btn1"){
-                        object.pageType = "inAppBrowser"
+                        object.openMode = "inAppBrowser"
+                        object.target = "https://xxxxx"
                     }else if (id == "btn2"){
-                        object.pageType = "externalBrowser"
+                        object.openMode = "externalBrowser"
+                        object.target = "https://xxxxx"
                     }else if(id == "btn3"){
-                        object.pageType = "native"
+                        object.openMode = "native"
                         object.target = "Renewal Polcies"
                     }else if(id == "btn4"){
-                        object.pageType = "native"
+                        object.openMode = "native"
                         object.target = "E-Payment"
                     }else if(id == "btn5"){
-                        object.pageType = "native"
+                        object.openMode = "native"
                         object.target = "E-Payment"
                     }
                     console.log(object)
