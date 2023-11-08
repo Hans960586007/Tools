@@ -15,24 +15,29 @@
     <script>
 
     var u = navigator.userAgent;
-    // var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 
         var object = {
             openMode: 'inAppBrowser',
-            target: "https://xxxxx",
+            target: "https://www-400t.aig.com.hk/AIUEJB/b2b/Login.jsp",
         }
         $(document).ready(function (){
             var btns = $("button")
             for (const btn in btns) {
                 $(btn).on('click',function (e){
+					let btnEl = e.target;
+					//console.log(btnEl.dataset); 
+					//object.openMode = btnEl.dataset.mode;
+					//object.target = btnEl.dataset.target;
+					
                     let id = e.target.id
                     if (id == "btn1"){
                         object.openMode = "inAppBrowser"
-                        object.target = "https://google.com"
+                        object.target = "https://www-400t.aig.com.hk/AIUEJB/b2b/Login.jsp"
                     }else if (id == "btn2"){
                         object.openMode = "externalBrowser"
-                        object.target = "https://google.com"
+                        object.target = "https://www-400t.aig.com.hk/AIUEJB/b2b/Login.jsp"
                     }else if(id == "btn3"){
                         object.openMode = "native"
                         object.target = "Renewal Polcies"
@@ -41,13 +46,24 @@
                         object.target = "E-Payment"
                     }else if(id == "btn5"){
                         object.openMode = "native"
-                        object.target = "E-Payment"
+                        object.target = "Sales Performance"
+                    }else if(id == "btn6"){
+                        object.openMode = "native"
+                        object.target = "Policy Search"
+                    }else if(id == "btn7"){
+                        object.openMode = "inAppBrowser"
+                        object.target = "https://www-400t.aig.com.hk/AIUEJB/b2b/Login.jsp"
+                    }else if(id == "btn8"){
+                        object.openMode = "externalBrowser"
+                        object.target = "https://www-400t.aig.com.hk/AIUEJB/b2b/Login.jsp"
+                    }else if(id == "btn9"){
+                       alert("testing");
                     }
                     console.log(object)
                     if (isAndroid){
                         window.android.jscalloc(object);
-                    }else{
-                        window.webkit.messageHandlers.inAppNavigation.postMessage(object)
+                    }else {
+                        window.webkit.messageHandlers.inAppNavigation.postMessage(JSON.stringify(object));
                     }
                 });
             }
@@ -60,12 +76,19 @@
 <body>
     <div class="sort content">
         <ul class="content" style="list-style: none;">
-            <li><button id="btn1">in app Browser</button></li>
-            <li><button id="btn2">external browser</button></li>
-            <li><button id="btn3">Pending to Renewal Polcies</button></li>
-            <li><button id="btn4">Payment Overdues</button></li>
-            <li><button id="btn5">Policy Pending to Pay</button></li>
+            <li><button id="btn1" data-mode="inAppBrowser" data-target="https://www-400t.aig.com.hk/AIUEJB/b2b/Login.jsp">in app Browser</button></li>
+            <li><button id="btn2" data-mode="externalBrowser" data-target="https://www-400t.aig.com.hk/AIUEJB/b2b/Login.jsp">external browser</button></li>
+            <li><button id="btn3" data-mode="native" data-target="Renewal Polcies">Native View - Renewal</button></li>
+            <li><button id="btn4" data-mode="native" data-target="E-Payment">Navive View - E-Payment</button></li>
+            <li><button id="btn5" data-mode="native" data-target="Sales Performance">Native View - Sales Performance</button></li>
+			<li><button id="btn6" data-mode="native" data-target="Policy Search">Native View - Policy Search</button></li>
+			<!--
+			<li><button id="btn7" data-mode="inAppBrowser" data-target="https://www-400t.aig.com.hk/api/authn/thumbsup/auth-token">in app Browser - View Token</button></li>
+			<li><button id="btn8" data-mode="externalBrowser" data-target="https://www-400t.aig.com.hk/api/authn/thumbsup/auth-token">external browser - View Token</button></li>
+			-->
+			<li><button id="btn9" data-mode="externalBrowser" data-target="https://www-400t.aig.com.hk/api/authn/thumbsup/auth-token">Alert()</button></li>
         </ul>
     </div>
+	<a href="/AIUEJB/app/trvmac/TrvInfo.html">Normal Href</a>
 </body>
 </html>
